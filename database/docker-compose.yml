@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  database:
+    image: postgres
+    container_name: database
+    volumes:
+      - ./dbData:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '5432:5432'
+    networks:
+      - shared-network
+    restart: on-failure
+
+networks:
+  shared-network:
+    name: shared-network
+    external: true
