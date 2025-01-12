@@ -11,6 +11,6 @@ export const connection = new Sequelize({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   dialect: process.env.DB_DIALECT as Dialect,
-  logging: process.env.DB_LOGGING === 'false',
+  logging: process.env.DB_LOGGING === 'true',
   models: [`${__dirname}/../models/**.ts`],
 });
