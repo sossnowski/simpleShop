@@ -3,4 +3,6 @@ import { ProductBodyType } from 'types/product/addProductBodyType';
 
 export const getAllProductsFromDb = () => Product.findAll({ attributes: ['uid', 'name', 'description', 'price', 'stock'] });
 
+export const getProductByUid = (uid: string) => Product.findOne({ where: { uid }, attributes: ['uid', 'name', 'description', 'price', 'stock'] });
+
 export const saveProductInDb = (product: ProductBodyType) => Product.create(product);
