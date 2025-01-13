@@ -1,9 +1,11 @@
 import { getProductByUid, saveProductInDb } from 'repository/ProductRepository';
+import { checkPriceGreaterThanZero } from 'services/productService';
 import { ProductBodyType } from 'types/product/addProductBodyType';
 import { errorFactory } from 'utils/errors/errorFactory';
 
 export const addProduct = async (productData: ProductBodyType) => {
   if (!productData) throw errorFactory().badRequestError('Bad request');
+  if (!checkPriceGreaterThanZero(productData.price)) throw errorFactory().badRequestError('Price must be greather than 0');
 
   return saveProductInDb(productData);
 };
