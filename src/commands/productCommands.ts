@@ -10,14 +10,15 @@ export const addProduct = async (productData: ProductBodyType) => {
 
 export const decreaseProductStockNumber = async (uid: string) => {
   const product = await getProductByUid(uid);
-  if (!product || product.stock === 0) throw errorFactory().badRequestError('Cannot change stock number of this product');
+  if (!product) throw errorFactory().notFoundError('Product not exist');
+  if (product.stock === 0) throw errorFactory().badRequestError('Cannot descrease stock number of this product');
   product.stock -= 1;
   return product.save();
 };
 
 export const increaseProductStockNumber = async (uid: string) => {
   const product = await getProductByUid(uid);
-  if (!product) throw errorFactory().notFoundError('Product not exists');
+  if (!product) throw errorFactory().notFoundError('Product not exist');
   product.stock += 1;
   return product.save();
 };
