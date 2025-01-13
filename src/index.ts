@@ -6,6 +6,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import { connection } from 'config/db';
+import routes from 'routes';
 import { errorHandler, handleUnhandledExceptions } from 'middlewares/errorHandler';
 import { errorFactory } from 'utils/errors/errorFactory';
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
+app.use('/api/v1', routes);
 app.use((
   req: Request,
   res: Response,
