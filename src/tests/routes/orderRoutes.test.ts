@@ -1,14 +1,14 @@
 import request from 'supertest';
 import { StatusCodes } from 'http-status-codes';
 import { errorFactory } from 'utils/errors/errorFactory';
-import { addOrder } from 'commands/orderCommands';
 import app from '../../app';
+import { addOrder } from 'commands/orderCommands';
 
 const API_PREFIX = '/api/v1';
 
 const TEST_UID = '612dfe2b-4f79-4a52-b295-cd59cd098ebd';
 
-jest.mock('../../commands/orderCommands', () => ({
+jest.mock('commands/orderCommands', () => ({
   addOrder: jest.fn((orderData) => Promise.resolve({
     uid: TEST_UID,
     customerId: orderData.customerId,
@@ -60,7 +60,7 @@ describe('Order Routes', () => {
         products: ['product1', 'product2'],
       };
 
-      addOrder.mockImplementationOnce(() => Promise.reject(errorFactory().internalServerError('error')));
+      (addOrder as jest.Mock).mockImplementationOnce(() => Promise.reject(errorFactory().internalServerError('error')));
 
       const response = await request(app).post(`${API_PREFIX}/orders`).send(errorOrder);
       expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);

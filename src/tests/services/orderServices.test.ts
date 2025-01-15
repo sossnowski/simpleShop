@@ -33,9 +33,9 @@ describe('Order Service - updateProductsStock', () => {
 
     const allOrderProducts = ['product1', 'product2'];
     const updatedProducts = await updateProductsStock(
-        mockProducts, 
-        allOrderProducts, 
-        mockTransaction
+      mockProducts,
+      allOrderProducts,
+      mockTransaction,
     );
 
     expect(mockProducts[0].stock).toBe(4);
