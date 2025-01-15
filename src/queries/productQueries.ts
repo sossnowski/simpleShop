@@ -1,3 +1,3 @@
-import { getAllProductsFromDb } from 'repository/ProductRepository';
+import { getAllProductsFromDb } from 'repository/productRepository';
 
 export const getAllProducts = async () => getAllProductsFromDb();

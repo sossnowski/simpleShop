@@ -1,4 +1,4 @@
-import { getProductByUid, saveProductInDb } from 'repository/ProductRepository';
+import { getProductByUid, saveProductInDb } from 'repository/productRepository';
 import { checkPriceGreaterThanZero } from 'services/productService';
 import { ProductBodyType } from 'types/product/addProductBodyType';
 import { errorFactory } from 'utils/errors/errorFactory';
