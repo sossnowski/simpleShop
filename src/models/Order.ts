@@ -29,6 +29,6 @@ export class Order extends Model {
   })
     customerId!: string;
 
-  @BelongsToMany(() => Product, { through: () => OrderProduct, foreignKey: 'orderUid', as: 'products' })
+  @BelongsToMany(() => Product, { through: { model: () => OrderProduct, unique: false }, foreignKey: 'orderUid', otherKey: 'productUid' })
     products!: Product[];
 }

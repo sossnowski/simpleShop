@@ -44,9 +44,12 @@ export class Product extends Model {
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
+    validate: {
+      min: 0,
+    },
   })
     stock!: number;
 
-  @BelongsToMany(() => Order, { through: () => OrderProduct, foreignKey: 'orderUid', as: 'products' })
+  @BelongsToMany(() => Order, { through: { model: () => OrderProduct, unique: false }, foreignKey: 'productUid' })
     orders!: Order[];
 }

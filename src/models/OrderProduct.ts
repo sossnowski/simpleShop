@@ -20,10 +20,14 @@ export class OrderProduct extends Model {
     uid!: string;
 
   @ForeignKey(() => Product)
-  @Column
+  @Column({
+    unique: false,
+  })
     productUid!: string;
 
   @ForeignKey(() => Order)
-  @Column
+  @Column({
+    unique: false,
+  })
     orderUid!: string;
 }
