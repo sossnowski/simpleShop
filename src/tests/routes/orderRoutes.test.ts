@@ -1,8 +1,8 @@
 import request from 'supertest';
 import { StatusCodes } from 'http-status-codes';
 import { errorFactory } from 'utils/errors/errorFactory';
-import app from '../../app';
 import { addOrder } from 'commands/orderCommands';
+import app from '../../app';
 
 const API_PREFIX = '/api/v1';
 
