@@ -1,3 +1,4 @@
 CREATE DATABASE shop;
-CREATE USER shop_user WITH PASSWORD 'shop_pass';
+CREATE USER shop_user WITH PASSWORD 'hardpassword';
 GRANT ALL PRIVILEGES ON DATABASE shop TO shop_user;
+ALTER DATABASE shop OWNER TO shop_user;

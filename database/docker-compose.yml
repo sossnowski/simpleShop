@@ -4,6 +4,8 @@ services:
   database:
     image: postgres
     container_name: database
+    environment:
+      - POSTGRES_PASSWORD=${DB_ROOT_PASSWORD:-testpass}
     volumes:
       - ./dbData:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
